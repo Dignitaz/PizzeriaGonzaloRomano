@@ -1,0 +1,210 @@
+import React, { useState } from "react";
+import styled from "styled-components";
+import { FcCancel } from "react-icons/fc";
+import { FaShoppingCart, FaArrowUp, FaArrowDown } from "react-icons/fa";
+import { useOrderContext } from "../context/order_context";
+import { TbShoppingCartOff } from "react-icons/tb";
+
+const YourOrderHorizontal = () => {
+  const [isOrderActive, setIsOrderActive] = useState(false);
+  const { startState, closePosition } = useOrderContext();
+  const array = startState.actualOrder;
+
+  const showOrder = () => {
+    if (isOrderActive) {
+      setIsOrderActive(false);
+    } else {
+      setIsOrderActive(true);
+    }
+  };
+
+  return (
+    <Wrapper>
+      <section className={`${isOrderActive ? "" : "hidden"}`}>
+        <div className="orderdiv">
+          <div className="orderdiv__positions">
+            <h4>Your Order:</h4>
+            <div className="iconsDiv" onClick={showOrder}>
+              <FaShoppingCart />
+              {isOrderActive ? <FaArrowDown /> : <FaArrowUp />}
+            </div>
+
+            <ul className="orderdiv__positions--list">
+              {array.length > 0 ? (
+                array.map((element) => {
+                  const { id, name, sizeprice, value } = element;
+                  return (
+                    <li key={id}>
+                      <h5>{name}</h5>
+                      <p className="sizediv">
+                        Size: <i>XL</i>
+                      </p>
+                      <p className="numberdiv">
+                        <i>{value}</i> x <i>{sizeprice}</i>
+                      </p>
+                      <div className="cancelicon">
+                        <FcCancel onClick={() => closePosition(id)} />
+                      </div>
+                    </li>
+                  );
+                })
+              ) : (
+                <div className="noorder">
+                  <TbShoppingCartOff />
+                  <p>Your order is empty</p>
+                </div>
+              )}
+            </ul>
+          </div>
+          <div className="orderdiv__summary">
+            <h4>Full amount:</h4>
+            <p
+              className="orderdiv__summary--paragraph"
+              style={{ fontSize: "19px" }}
+            >
+              {`${array
+                .reduce((accumulator, array) => {
+                  return accumulator + array.sizeprice * array.value;
+                }, 0)
+                .toFixed(2)} zł`}
+            </p>
+          </div>
+          <div className="btn"> Order now</div>
+        </div>
+      </section>
+    </Wrapper>
+  );
+};
+
+const Wrapper = styled.section`
+  section {
+    position: fixed;
+    right: 50%;
+    bottom: 0;
+    transform: translate(50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin: 0 auto;
+    z-index: 10;
+    transition: 0.5s;
+
+    .orderdiv {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      background-color: var(--clr-grey-9);
+      border: 5px solid var(--clr-grey-4);
+      border-radius: 10px;
+      &__positions {
+        position: relative;
+        padding: 0 10px 10px;
+        .iconsDiv {
+          position: absolute;
+          right: 10px;
+          top: -10px;
+          font-size: 20px;
+          cursor: pointer;
+          svg:first-child {
+            margin-right: 15px;
+          }
+        }
+        h4 {
+          border-bottom: 2px solid var(--clr-primary-7);
+          margin-bottom: 25px;
+          /* padding-bottom: 10px; */
+        }
+        &--list {
+          display: flex;
+          flex-direction: row;
+          min-width: 50vw;
+          max-width: 80vw;
+          overflow-x: scroll;
+          .noorder {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-content: center;
+            height: 100px;
+            width: 100%;
+            svg {
+              margin: 20px auto;
+              scale: calc(3);
+              color: rgb(210, 0, 0);
+            }
+            p {
+              width: 100%;
+              text-align: center;
+            }
+          }
+          li {
+            position: relative;
+            padding: 10px;
+            margin: 0 5px;
+            border-radius: 5px;
+            background-color: var(--clr-primary-7);
+            min-width: 120px;
+            h5 {
+              text-align: center;
+              margin-bottom: 5px;
+            }
+            .sizediv {
+              margin-bottom: 5px;
+            }
+            .numberdiv {
+              margin-bottom: 5px;
+            }
+            .cancelicon {
+              position: absolute;
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-end;
+              bottom: 20px;
+              right: 10px;
+              /* height: 100%; */
+              svg {
+                cursor: pointer;
+                transform: scale(2);
+                transform-origin: center right;
+              }
+            }
+          }
+        }
+      }
+      &__summary {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        background-color: var(--clr-grey-9);
+        font-style: italic;
+        h4 {
+          margin-bottom: 5px;
+          margin-right: 5px;
+        }
+        p {
+          padding: 0;
+          margin: 0;
+        }
+        .btn {
+          text-align: center;
+          width: 80%;
+        }
+      }
+    }
+  }
+  .hidden {
+    bottom: -230px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    section {
+      display: none;
+    }
+  }
+`;
+
+export default YourOrderHorizontal;

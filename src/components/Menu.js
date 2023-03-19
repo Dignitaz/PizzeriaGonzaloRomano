@@ -1,0 +1,268 @@
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import { useOrderContext } from "../context/order_context";
+import { AiFillMinusSquare, AiFillPlusSquare } from "react-icons/ai";
+
+const Menu = (props) => {
+  const restaurantmenu = props.rest_menu;
+  const { sendToOrder, numberofPizzas, setNumberofPizzas } = useOrderContext();
+
+  const addPizzaNumber = (id) => {
+    setNumberofPizzas(
+      numberofPizzas.map((element) => {
+        if (element.id === id) {
+          if (element.value < 0) {
+            return { ...element, value: 0 };
+          }
+          return { ...element, value: element.value + 1 };
+        } else {
+          return element;
+        }
+      })
+    );
+  };
+
+  const subtractPizzaNumber = (id) => {
+    setNumberofPizzas(
+      numberofPizzas.map((element) => {
+        if (element.id === id) {
+          if (element.value <= 0) {
+            return { ...element, value: 0 };
+          }
+          return { ...element, value: element.value - 1 };
+        } else {
+          return element;
+        }
+      })
+    );
+  };
+
+  const handleSelectChange = (event, id) => {
+    const selectedValue = event.target.value;
+    setNumberofPizzas(
+      numberofPizzas.map((element) => {
+        if (element.id === id) {
+          return { ...element, sizeprice: parseFloat(selectedValue) };
+        } else {
+          return element;
+        }
+      })
+    );
+  };
+
+  const handleInputChange = (event, id, name) => {
+    setNumberofPizzas(
+      numberofPizzas.map((element) => {
+        if (element.id === id) {
+          if (element.value < 0) {
+            return { ...element, value: 0 };
+          }
+          return {
+            ...element,
+            value: parseFloat(event.target.value),
+          };
+        } else {
+          return element;
+        }
+      })
+    );
+  };
+
+  useEffect(() => {
+    const newState = numberofPizzas.map((element) => {
+      const newArray = restaurantmenu.find(
+        (restElement) => restElement.id === element.id
+      );
+      const sizeprice = newArray.price[0].xl;
+      const name = newArray.name;
+      return { ...element, sizeprice: sizeprice, name };
+    });
+    setNumberofPizzas(newState);
+  }, []);
+
+  return (
+    <Wrapper>
+      <div className="list">
+        <div className="list__fulllist">
+          {restaurantmenu.map((position) => {
+            const { id, name, picture, price, toppings } = position;
+            const pizzavalue = numberofPizzas.find((pizza) => pizza.id === id);
+            const { value } = pizzavalue;
+            return (
+              <div key={id} className="list__fulllist--position">
+                <div className="info">
+                  <h3>{name}</h3>
+                  <h5>Pizza topings:</h5>
+                  <p className="toppings">{toppings}</p>
+                  <label>
+                    Price:
+                    <select
+                      name="pizzaPrice"
+                      onChange={(event) => handleSelectChange(event, id)}
+                    >
+                      <option value={price[0].xl} defaultValue>
+                        Size XL - cost {price[0].xl}
+                      </option>
+                      <option value={price[1].l}>
+                        Size L - cost {price[1].l}
+                      </option>
+                    </select>
+                  </label>
+                  <div className="Amountdiv">
+                    <span>Number</span>
+                    <AiFillMinusSquare
+                      onClick={() => subtractPizzaNumber(id)}
+                      style={{ fontSize: "24px", margin: " 0 5px" }}
+                    />
+                    <input
+                      style={{ width: "20px" }}
+                      value={value}
+                      onChange={(event) => handleInputChange(event, id, name)}
+                    ></input>
+                    <AiFillPlusSquare
+                      onClick={() => addPizzaNumber(id)}
+                      style={{ fontSize: "24px", margin: " 0 5px" }}
+                    />
+                  </div>
+                  <button className="btn" onClick={() => sendToOrder(id)}>
+                    Add to card
+                  </button>
+                </div>
+                <div className="picture">
+                  <img src={picture} alt={name} />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </Wrapper>
+  );
+};
+
+const Wrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  .list {
+    margin-top: 20px;
+    &__fulllist {
+      margin: 10px 0;
+      &--position {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        position: relative;
+        padding: 10px;
+        margin-top: 10px;
+        background-color: var(--clr-primary-7);
+        .info {
+          width: 80vw;
+          .btn {
+            margin: 15px 10px 5px;
+          }
+        }
+        p {
+          width: 250px;
+        }
+        .toppings {
+          font-style: italic;
+        }
+        select {
+          margin-left: 10px;
+          font-size: 14px;
+          p {
+            font-size: 20px;
+          }
+        }
+        .Amountdiv {
+          display: flex;
+          flex-direction: row;
+          align-content: center;
+          margin-top: 10px;
+        }
+        .picture {
+          position: absolute;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          top: 20%;
+          right: 0;
+          height: 100%;
+          img {
+            /* transform: scale(1); */
+            transform-origin: center right;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 576px) {
+    .list {
+      &__fulllist {
+        &--position {
+          .info {
+            width: 70vw;
+          }
+          p {
+            width: 300px;
+          }
+          .picture {
+            top: 0;
+            img {
+              transform: scale(1);
+            }
+          }
+        }
+      }
+    }
+  }
+  @media screen and (min-width: 768px) {
+    .list {
+      &__fulllist {
+        &--position {
+          .info {
+            width: 60vw;
+          }
+          p {
+            width: 500px;
+          }
+          .picture {
+            top: 0;
+            img {
+              transform: scale(1.5);
+            }
+          }
+        }
+      }
+    }
+  }
+  @media screen and (min-width: 1200px) {
+    .list {
+      &__fulllist {
+        &--position {
+          .info {
+            width: 60vw;
+          }
+          h5 {
+            font-size: 26px;
+          }
+          p {
+            font-size: 20px;
+            width: 800px;
+          }
+          .picture {
+            top: 0;
+            img {
+              transform: scale(1.8);
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export default Menu;
