@@ -39,10 +39,29 @@ const Menu = (props) => {
 
   const handleSelectChange = (event, id) => {
     const selectedValue = event.target.value;
+    console.log(selectedValue);
     setNumberofPizzas(
       numberofPizzas.map((element) => {
         if (element.id === id) {
-          return { ...element, sizeprice: parseFloat(selectedValue) };
+          console.log(element);
+          const samePositionInMenu = restaurantmenu.find(
+            (elem) => elem.id === id
+          );
+          const priceOfPizza = samePositionInMenu.sizeprice;
+          console.log(priceOfPizza);
+          if (selectedValue === "xl") {
+            return {
+              ...element,
+              price: parseFloat(priceOfPizza[0].price),
+              size: selectedValue,
+            };
+          } else if (selectedValue === "l") {
+            return {
+              ...element,
+              price: parseFloat(priceOfPizza[1].price),
+              size: selectedValue,
+            };
+          }
         } else {
           return element;
         }
@@ -73,9 +92,10 @@ const Menu = (props) => {
       const newArray = restaurantmenu.find(
         (restElement) => restElement.id === element.id
       );
-      const sizeprice = newArray.price[0].xl;
+      const price = newArray.sizeprice[0].price;
+      const size = newArray.sizeprice[0].size;
       const name = newArray.name;
-      return { ...element, sizeprice: sizeprice, name };
+      return { ...element, price, name, size };
     });
     setNumberofPizzas(newState);
   }, []);
@@ -85,7 +105,7 @@ const Menu = (props) => {
       <div className="list">
         <div className="list__fulllist">
           {restaurantmenu.map((position) => {
-            const { id, name, picture, price, toppings } = position;
+            const { id, name, picture, sizeprice, toppings } = position;
             const pizzavalue = numberofPizzas.find((pizza) => pizza.id === id);
             const { value } = pizzavalue;
             return (
@@ -100,11 +120,11 @@ const Menu = (props) => {
                       name="pizzaPrice"
                       onChange={(event) => handleSelectChange(event, id)}
                     >
-                      <option value={price[0].xl} defaultValue>
-                        Size XL - cost {price[0].xl}
+                      <option value={"xl"} defaultValue>
+                        Size XL - cost {sizeprice[0].price}
                       </option>
-                      <option value={price[1].l}>
-                        Size L - cost {price[1].l}
+                      <option value={"l"}>
+                        Size L - cost {sizeprice[1].price}
                       </option>
                     </select>
                   </label>
@@ -124,7 +144,10 @@ const Menu = (props) => {
                       style={{ fontSize: "24px", margin: " 0 5px" }}
                     />
                   </div>
-                  <button className="btn" onClick={() => sendToOrder(id)}>
+                  <button
+                    className="btn"
+                    onClick={() => sendToOrder(id, name, sizeprice)}
+                  >
                     Add to card
                   </button>
                 </div>

@@ -5,6 +5,8 @@ import {
   Loading,
   YourOrderVertical,
   YourOrderHorizontal,
+  OrderForm,
+  OrderConfirm,
 } from "../components/index";
 import { useProductsContext } from "../context/products_context";
 const OrderPage = (props) => {
@@ -16,6 +18,8 @@ const OrderPage = (props) => {
 
   return (
     <Wrapper>
+      <OrderForm />
+      <OrderConfirm />
       <YourOrderVertical />
       <YourOrderHorizontal />
       <div className="orderpage">

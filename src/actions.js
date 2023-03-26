@@ -11,3 +11,4 @@ export const GET_MENU_DATA_ERROR = "GET_MENU_DATA_ERROR";
 //order context
 export const SEND_ORDER = "SEND_ORDER";
 export const CLOSE_POSITION = "CLOSE_POSITION";
+export const SUME_FULL_AMOUNT = "SUME_FULL_AMOUNT";

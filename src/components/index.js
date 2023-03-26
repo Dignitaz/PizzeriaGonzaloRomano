@@ -9,6 +9,8 @@ import YourOrderVertical from "./YourOrder";
 import Contact from "./Contact";
 import Loading from "./Loading";
 import YourOrderHorizontal from "./YourOrderHorizontal";
+import OrderForm from "./OrderForm";
+import OrderConfirm from "./OrderConfirm";
 export {
   Navbar,
   Footer,
@@ -21,4 +23,6 @@ export {
   Loading,
   Contact,
   YourOrderHorizontal,
+  OrderForm,
+  OrderConfirm,
 };

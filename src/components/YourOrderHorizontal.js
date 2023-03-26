@@ -7,7 +7,7 @@ import { TbShoppingCartOff } from "react-icons/tb";
 
 const YourOrderHorizontal = () => {
   const [isOrderActive, setIsOrderActive] = useState(false);
-  const { startState, closePosition } = useOrderContext();
+  const { startState, closePosition, setFullAmount } = useOrderContext();
   const array = startState.actualOrder;
 
   const showOrder = () => {
@@ -32,15 +32,15 @@ const YourOrderHorizontal = () => {
             <ul className="orderdiv__positions--list">
               {array.length > 0 ? (
                 array.map((element) => {
-                  const { id, name, sizeprice, value } = element;
+                  const { id, name, size, price, value } = element;
                   return (
                     <li key={id}>
                       <h5>{name}</h5>
                       <p className="sizediv">
-                        Size: <i>XL</i>
+                        Size: <i>{size}</i>
                       </p>
                       <p className="numberdiv">
-                        <i>{value}</i> x <i>{sizeprice}</i>
+                        <i>{value}</i> x <i>{price}</i>
                       </p>
                       <div className="cancelicon">
                         <FcCancel onClick={() => closePosition(id)} />
@@ -62,11 +62,7 @@ const YourOrderHorizontal = () => {
               className="orderdiv__summary--paragraph"
               style={{ fontSize: "19px" }}
             >
-              {`${array
-                .reduce((accumulator, array) => {
-                  return accumulator + array.sizeprice * array.value;
-                }, 0)
-                .toFixed(2)} zł`}
+              {`${setFullAmount} zł`}
             </p>
           </div>
           <div className="btn"> Order now</div>

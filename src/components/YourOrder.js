@@ -5,7 +5,8 @@ import { TbShoppingCartOff } from "react-icons/tb";
 import { useOrderContext } from "../context/order_context";
 
 const YourOrderVertical = () => {
-  const { startState, closePosition } = useOrderContext();
+  const { startState, closePosition, setFullAmount, toggleShowOrderForm } =
+    useOrderContext();
   let array = startState.actualOrder;
   return (
     <Wrapper>
@@ -15,15 +16,15 @@ const YourOrderVertical = () => {
           <ul className="orderdiv__positions--list">
             {array.length > 0 ? (
               array.map((element) => {
-                const { id, name, sizeprice, value } = element;
+                const { id, name, size, price, value } = element;
                 return (
                   <li key={id}>
                     <h5>{name}</h5>
                     <p className="sizediv">
-                      Size: <i>XL</i>
+                      Size: <i>{size}</i>
                     </p>
                     <p className="numberdiv">
-                      <i>{value}</i> x <i>{sizeprice}</i>
+                      <i>{value}</i> x <i>{price}</i>
                     </p>
                     <div className="cancelicon">
                       <FcCancel onClick={() => closePosition(id)} />
@@ -41,15 +42,12 @@ const YourOrderVertical = () => {
         </div>
         <div className="orderdiv__summary">
           <h5>Full amount:</h5>
-          <p className="fullAmount">
-            {`${array
-              .reduce((accumulator, array) => {
-                return accumulator + array.sizeprice * array.value;
-              }, 0)
-              .toFixed(2)} zł`}
-          </p>
+          <p className="fullAmount">{`${setFullAmount} zł`}</p>
         </div>
-        <div className="btn"> Order now</div>
+        <div className="btn" onClick={toggleShowOrderForm}>
+          {" "}
+          Order now
+        </div>
       </div>
     </Wrapper>
   );
@@ -94,8 +92,6 @@ const Wrapper = styled.section`
             margin: 20px auto;
             scale: calc(3);
             color: rgb(210, 0, 0);
-          }
-          p {
           }
         }
         li {
