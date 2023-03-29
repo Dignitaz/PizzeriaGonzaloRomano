@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/PizzeriaGonzaloRomano/static/css/main.2f0b6511.css",
-    "main.js": "/PizzeriaGonzaloRomano/static/js/main.8cbe5f6c.js",
+    "main.css": "/PizzeriaGonzaloRomano/static/css/main.81018875.css",
+    "main.js": "/PizzeriaGonzaloRomano/static/js/main.b1215493.js",
     "static/media/restlower_1920.jpg": "/PizzeriaGonzaloRomano/static/media/restlower_1920.64b429f63118103f5116.jpg",
     "static/media/restaurant_back.jpg": "/PizzeriaGonzaloRomano/static/media/restaurant_back.1922569b85c8b5fc0c5f.jpg",
     "static/media/restupper_1920.jpg": "/PizzeriaGonzaloRomano/static/media/restupper_1920.88fce2bd30bc88073175.jpg",
@@ -20,11 +20,11 @@
     "static/media/food1.jpg": "/PizzeriaGonzaloRomano/static/media/food1.2198384d565fde7f1c6b.jpg",
     "static/media/logo.png": "/PizzeriaGonzaloRomano/static/media/logo.ebcbdc95fdfc8dfaa264.png",
     "index.html": "/PizzeriaGonzaloRomano/index.html",
-    "main.2f0b6511.css.map": "/PizzeriaGonzaloRomano/static/css/main.2f0b6511.css.map",
-    "main.8cbe5f6c.js.map": "/PizzeriaGonzaloRomano/static/js/main.8cbe5f6c.js.map"
+    "main.81018875.css.map": "/PizzeriaGonzaloRomano/static/css/main.81018875.css.map",
+    "main.b1215493.js.map": "/PizzeriaGonzaloRomano/static/js/main.b1215493.js.map"
   },
   "entrypoints": [
-    "static/css/main.2f0b6511.css",
-    "static/js/main.8cbe5f6c.js"
+    "static/css/main.81018875.css",
+    "static/js/main.b1215493.js"
   ]
 }
