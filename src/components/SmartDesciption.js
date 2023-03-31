@@ -38,7 +38,7 @@ const SmartDesctription = () => {
 };
 const Wrapper = styled.section`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-content: center;
   min-height: 50vh;
@@ -46,17 +46,19 @@ const Wrapper = styled.section`
   margin: 0 auto;
   max-width: var(--max-width);
   .img-section {
+    /* display: none; */
     position: relative;
-    width: 50%;
+    height: 300px;
+    width: 100%;
     &__img {
       &--lower {
         position: absolute;
-        left: 7%;
-        top: 10%;
+        left: 5%;
+        top: 5%;
         border: 3px solid black;
         box-shadow: 5px 5px 10px black;
-        width: 50%;
-        height: 50%;
+        width: 70%;
+        height: 40%;
         background-image: url("${restlower640}");
         background-position: center;
         background-repeat: no-repeat;
@@ -64,11 +66,11 @@ const Wrapper = styled.section`
       }
       &--upper {
         position: absolute;
-        left: 35%;
+        left: 23%;
         top: 40%;
         border: 3px solid black;
         box-shadow: 5px 5px 10px black;
-        width: 50%;
+        width: 70%;
         height: 50%;
         background-image: url("${restupper640}");
         background-position: center;
@@ -84,10 +86,12 @@ const Wrapper = styled.section`
     align-content: center;
     flex-direction: column;
     border: 3px solid var(--clr-primary-5);
+
     margin: 15px;
+    margin-top: 0px;
     padding: 10px;
     border-radius: 15px;
-    max-width: 50%;
+    max-width: 90%;
     box-shadow: 5px 5px 10px var(--clr-primary-5);
     h3 {
       text-align: center;
@@ -99,7 +103,65 @@ const Wrapper = styled.section`
       margin-top: 20px;
     }
   }
-  @media (max-width: 992px) {
+  /* @media (min-width: 470px) {
+    display: flex;
+    .img-section {
+      display: flex;
+      margin-right: 10px;
+      width: 50%;
+      &__img {
+        &--lower {
+          left: 2%;
+          top: 5%;
+          width: 90%;
+          height: 40%;
+        }
+        &--upper {
+          left: 10%;
+          top: 40%;
+          width: 90%;
+          height: 50%;
+        }
+      }
+    }
+    .small-about-section {
+      max-width: 55%;
+      margin: 10px auto;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  } */
+  @media (min-width: 576px) {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    .img-section {
+      width: 100%;
+      height: 100%;
+      padding: 10px;
+      &__img {
+        &--lower {
+          left: 7%;
+          top: 10%;
+          width: 45%;
+          height: 80%;
+        }
+        &--upper {
+          left: 50%;
+          top: 15%;
+          width: 45%;
+          height: 80%;
+        }
+      }
+    }
+    .small-about-section {
+      max-width: 70%;
+      margin: 10px auto;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  }
+  @media (min-width: 992px) {
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -109,15 +171,15 @@ const Wrapper = styled.section`
       &__img {
         &--lower {
           left: 10%;
-          top: 10%;
+          top: 5%;
           width: 45%;
-          height: 45;
+          height: 55%;
         }
         &--upper {
           left: 40%;
-          top: 40%;
+          top: 35%;
           width: 45%;
-          height: 45%;
+          height: 55%;
         }
       }
     }

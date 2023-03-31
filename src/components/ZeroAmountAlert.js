@@ -3,43 +3,42 @@ import styled from "styled-components";
 import { useOrderContext } from "../context/order_context";
 import { GrFormClose } from "react-icons/gr";
 
-const OrderConfirm = () => {
-  const { isOrderValid, setFullAmount, orderConfirmTab } = useOrderContext();
+const ZeroAmountAlert = () => {
+  const { activeAlert, closeAlert } = useOrderContext();
   return (
     <Wrapper>
       <div
         className={`${
-          isOrderValid ? "bcghero" : "bcghero orderconfirmnondisplay"
+          activeAlert ? "bcghero" : "bcghero orderconfirmnondisplay"
         }`}
       >
         <div className="orderconfirm">
           <GrFormClose
             className="orderconfirm__closebtn"
-            onClick={orderConfirmTab}
+            onClick={closeAlert}
           />
-          <h3>Thanks for your order!</h3>
+          <h3>Something gone wrong!</h3>
           <div className="underline"></div>
           <div className="orderform__form"></div>
           <div className="orderform__form--summary">
-            <p> Order waiting time:</p>
-            <h3> 45-60min</h3>
-            <h5>Full amount:</h5>
-            <p>{`${setFullAmount} zł`}</p>
+            <br />
+            <p> Your can't order zero pizzas</p>
           </div>
-          <button type="submit" className="btn" onClick={orderConfirmTab}>
-            Thanks!
+          <button type="submit" className="btn" onClick={closeAlert}>
+            Back to menu
           </button>
         </div>
       </div>
     </Wrapper>
   );
 };
+
 const Wrapper = styled.section`
   .bcghero {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 80vw;
     height: 100%;
     background-color: rgb(0, 0, 0, 0.4);
     z-index: 1000;
@@ -72,11 +71,9 @@ const Wrapper = styled.section`
   .orderconfirmnondisplay {
     display: none;
   }
-  @media (max-width: 600px) {
-    .orderform {
-      width: 80vw;
-    }
+  @media (min-width: 576px) {
+    width: 100%;
   }
 `;
 
-export default OrderConfirm;
+export default ZeroAmountAlert;

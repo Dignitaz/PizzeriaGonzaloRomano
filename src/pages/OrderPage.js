@@ -21,7 +21,7 @@ const OrderPage = (props) => {
       <OrderForm />
       <OrderConfirm />
       <YourOrderVertical />
-      <YourOrderHorizontal />
+      {/* <YourOrderHorizontal /> */}
       <div className="orderpage">
         <h2>Ours Menu</h2>
         <div className="orderpage__underline"></div>

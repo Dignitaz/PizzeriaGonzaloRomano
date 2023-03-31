@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useOrderContext } from "../context/order_context";
 import { AiFillMinusSquare, AiFillPlusSquare } from "react-icons/ai";
+import { ZeroAmountAlert } from "./index";
 
 const Menu = (props) => {
   const restaurantmenu = props.rest_menu;
@@ -11,8 +12,8 @@ const Menu = (props) => {
     setNumberofPizzas(
       numberofPizzas.map((element) => {
         if (element.id === id) {
-          if (element.value < 0) {
-            return { ...element, value: 0 };
+          if (element.value < 1) {
+            return { ...element, value: 1 };
           }
           return { ...element, value: element.value + 1 };
         } else {
@@ -26,8 +27,8 @@ const Menu = (props) => {
     setNumberofPizzas(
       numberofPizzas.map((element) => {
         if (element.id === id) {
-          if (element.value <= 0) {
-            return { ...element, value: 0 };
+          if (element.value <= 1) {
+            return { ...element, value: 1 };
           }
           return { ...element, value: element.value - 1 };
         } else {
@@ -39,11 +40,9 @@ const Menu = (props) => {
 
   const handleSelectChange = (event, id) => {
     const selectedValue = event.target.value;
-    console.log(selectedValue);
     setNumberofPizzas(
       numberofPizzas.map((element) => {
         if (element.id === id) {
-          console.log(element);
           const samePositionInMenu = restaurantmenu.find(
             (elem) => elem.id === id
           );
@@ -69,12 +68,12 @@ const Menu = (props) => {
     );
   };
 
-  const handleInputChange = (event, id, name) => {
+  const handleInputChange = (event, id) => {
     setNumberofPizzas(
       numberofPizzas.map((element) => {
         if (element.id === id) {
-          if (element.value < 0) {
-            return { ...element, value: 0 };
+          if (element.value < 1) {
+            return { ...element, value: 1 };
           }
           return {
             ...element,
@@ -102,6 +101,7 @@ const Menu = (props) => {
 
   return (
     <Wrapper>
+      <ZeroAmountAlert />
       <div className="list">
         <div className="list__fulllist">
           {restaurantmenu.map((position) => {
@@ -135,7 +135,7 @@ const Menu = (props) => {
                       style={{ fontSize: "24px", margin: " 0 5px" }}
                     />
                     <input
-                      style={{ width: "20px" }}
+                      type="number"
                       value={value}
                       onChange={(event) => handleInputChange(event, id, name)}
                     ></input>
@@ -204,6 +204,18 @@ const Wrapper = styled.section`
           flex-direction: row;
           align-content: center;
           margin-top: 10px;
+          input {
+            text-align: center;
+            width: 20px;
+          }
+          input::-webkit-outer-spin-button,
+          input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+          input[type="number"] {
+            -moz-appearance: textfield;
+          }
         }
         .picture {
           position: absolute;
@@ -242,6 +254,7 @@ const Wrapper = styled.section`
       }
     }
   }
+
   @media screen and (min-width: 768px) {
     .list {
       &__fulllist {
@@ -250,18 +263,39 @@ const Wrapper = styled.section`
             width: 60vw;
           }
           p {
-            width: 500px;
+            width: 370px;
           }
           .picture {
             top: 0;
             img {
-              transform: scale(1.5);
+              transform: scale(1.2);
             }
           }
         }
       }
     }
   }
+  @media screen and (min-width: 920px) {
+    .list {
+      &__fulllist {
+        &--position {
+          .info {
+            width: 60vw;
+          }
+          p {
+            width: 440px;
+          }
+          .picture {
+            top: 0;
+            img {
+              transform: scale(1.4);
+            }
+          }
+        }
+      }
+    }
+  }
+
   @media screen and (min-width: 1200px) {
     .list {
       &__fulllist {
@@ -274,13 +308,35 @@ const Wrapper = styled.section`
           }
           p {
             font-size: 20px;
-            width: 800px;
+            width: 550px;
           }
           .picture {
             top: 0;
             img {
               transform: scale(1.8);
             }
+          }
+        }
+      }
+    }
+  }
+  @media screen and (min-width: 1500px) {
+    .list {
+      &__fulllist {
+        &--position {
+          p {
+            width: 700px;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (min-width: 1800px) {
+    .list {
+      &__fulllist {
+        &--position {
+          p {
+            width: 800px;
           }
         }
       }

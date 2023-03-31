@@ -11,6 +11,7 @@ import Loading from "./Loading";
 import YourOrderHorizontal from "./YourOrderHorizontal";
 import OrderForm from "./OrderForm";
 import OrderConfirm from "./OrderConfirm";
+import ZeroAmountAlert from "./ZeroAmountAlert";
 export {
   Navbar,
   Footer,
@@ -25,4 +26,5 @@ export {
   YourOrderHorizontal,
   OrderForm,
   OrderConfirm,
+  ZeroAmountAlert,
 };

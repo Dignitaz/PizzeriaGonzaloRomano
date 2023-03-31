@@ -7,7 +7,8 @@ import { TbShoppingCartOff } from "react-icons/tb";
 
 const YourOrderHorizontal = () => {
   const [isOrderActive, setIsOrderActive] = useState(false);
-  const { startState, closePosition, setFullAmount } = useOrderContext();
+  const { startState, closePosition, setFullAmount, toggleShowOrderForm } =
+    useOrderContext();
   const array = startState.actualOrder;
 
   const showOrder = () => {
@@ -65,7 +66,15 @@ const YourOrderHorizontal = () => {
               {`${setFullAmount} zł`}
             </p>
           </div>
-          <div className="btn"> Order now</div>
+          {setFullAmount > 500 ? (
+            <p className="warning_amout">
+              Orders over 500 zł are carried out only by phone{" "}
+            </p>
+          ) : (
+            <div className="btn" onClick={toggleShowOrderForm}>
+              Order now
+            </div>
+          )}
         </div>
       </section>
     </Wrapper>
@@ -74,10 +83,11 @@ const YourOrderHorizontal = () => {
 
 const Wrapper = styled.section`
   section {
-    position: fixed;
+    position: none;
     right: 50%;
     bottom: 0;
     transform: translate(50%);
+    height: 240px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -91,7 +101,7 @@ const Wrapper = styled.section`
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px;
+      padding: 10px;
       background-color: var(--clr-grey-9);
       border: 5px solid var(--clr-grey-4);
       border-radius: 10px;
@@ -100,8 +110,8 @@ const Wrapper = styled.section`
         padding: 0 10px 10px;
         .iconsDiv {
           position: absolute;
-          right: 10px;
-          top: -10px;
+          right: 5px;
+          top: -2px;
           font-size: 20px;
           cursor: pointer;
           svg:first-child {
@@ -110,13 +120,12 @@ const Wrapper = styled.section`
         }
         h4 {
           border-bottom: 2px solid var(--clr-primary-7);
-          margin-bottom: 25px;
-          /* padding-bottom: 10px; */
+          margin-bottom: 10px;
         }
         &--list {
           display: flex;
           flex-direction: row;
-          min-width: 50vw;
+          min-width: 60vw;
           max-width: 80vw;
           overflow-x: scroll;
           .noorder {
@@ -190,17 +199,45 @@ const Wrapper = styled.section`
           width: 80%;
         }
       }
+      .warning_amout {
+        color: red;
+        font-size: 14px;
+        text-align: center;
+        margin: 0;
+      }
     }
   }
   .hidden {
-    bottom: -230px;
+    bottom: -18%;
   }
 
-  @media screen and (min-width: 1200px) {
+  /* @media (min-width: 303px) {
+    .hidden {
+      bottom: -22%;
+    }
+  } */
+  /* @media (min-width: 467px) {
+    .hidden {
+      top: 873px;
+    }
+  } */
+
+  /* @media (min-width: 800px) {
+    section {
+      .warning_amout {
+        font-size: 2px;
+      }
+    }
+    .hidden {
+      bottom: -200px;
+    }
+  } */
+
+  /* @media (min-width: 1200px) {
     section {
       display: none;
     }
-  }
+  } */
 `;
 
 export default YourOrderHorizontal;

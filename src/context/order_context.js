@@ -1,6 +1,5 @@
 import React, { useContext, useReducer, useState } from "react";
 import reducer from "../reducers/orders_reducer";
-import { useProductsContext } from "../context/products_context";
 import { SEND_ORDER, CLOSE_POSITION } from "../actions";
 
 let startState = {
@@ -22,6 +21,7 @@ export const OrderProvider = ({ children }) => {
     { id: 9, value: 1 },
     { id: 10, value: 1 },
   ]);
+  const [activeAlert, setActiveAlert] = useState(false);
   const [idCount, setIdCount] = useState(0);
   const [showOrderForm, setShowOrderForm] = useState(false);
   const [order, setOrder] = useState({
@@ -32,8 +32,9 @@ export const OrderProvider = ({ children }) => {
     comments: "",
     payment: "",
   });
-  const [isOrderValid, setIsOrderValid] = useState(true);
+  const [isOrderValid, setIsOrderValid] = useState(false);
   const [state, dispatch] = useReducer(reducer, startState);
+
   const sendToOrder = (id, name, sizeprice) => {
     const { size, price } = sizeprice;
     const addToOrder = numberofPizzas.find((element) => element.id === id);
@@ -49,6 +50,10 @@ export const OrderProvider = ({ children }) => {
     const sameObject = startState.actualOrder.filter(
       (element) => element.name === name
     );
+
+    if (newPosition.value === 0) {
+      return setActiveAlert(true);
+    }
     if (sameObject.length > 0) {
       const findDimensions = sameObject.find(
         (element) => element.size === newPosition.size
@@ -82,6 +87,9 @@ export const OrderProvider = ({ children }) => {
     .toFixed(2);
 
   const toggleShowOrderForm = () => {
+    if (setFullAmount === "0.00") {
+      return setActiveAlert(true);
+    }
     if (showOrderForm) {
       setShowOrderForm(false);
     } else if (showOrderForm === false) {
@@ -101,9 +109,13 @@ export const OrderProvider = ({ children }) => {
     if (isOrderValid) {
       setIsOrderValid(false);
       setShowOrderForm(false);
+      startState.actualOrder = [];
     } else if (isOrderValid === false) {
       setIsOrderValid(true);
     }
+  };
+  const closeAlert = () => {
+    setActiveAlert(false);
   };
 
   return (
@@ -123,6 +135,8 @@ export const OrderProvider = ({ children }) => {
         isOrderValid,
         setIsOrderValid,
         orderConfirmTab,
+        activeAlert,
+        closeAlert,
       }}
     >
       {children}
