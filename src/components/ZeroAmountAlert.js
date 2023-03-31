@@ -38,7 +38,7 @@ const Wrapper = styled.section`
     position: fixed;
     top: 0;
     left: 0;
-    width: 80vw;
+    width: 100%;
     height: 100%;
     background-color: rgb(0, 0, 0, 0.4);
     z-index: 1000;
@@ -54,6 +54,7 @@ const Wrapper = styled.section`
       border-radius: 10px;
       border: 5px solid var(--clr-primary-3);
       text-align: center;
+      width: 80vw;
       .underline {
         border-top: 3px solid var(--clr-primary-3);
       }
