@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { FcCancel } from "react-icons/fc";
 import { TbShoppingCartOff } from "react-icons/tb";
@@ -12,15 +12,11 @@ const YourOrderVertical = () => {
   let array = startState.actualOrder;
 
   const showOrder = () => {
-    if (isOrderActive) {
-      setIsOrderActive(false);
-    } else {
-      setIsOrderActive(true);
-    }
+    setIsOrderActive(!isOrderActive);
   };
   return (
     <Wrapper>
-      <div className={`${isOrderActive ? "orderdiv" : "orderdiv hidden"}`}>
+      <div className={`${isOrderActive ? "orderdiv visible" : "orderdiv"}`}>
         <div className="orderdiv__positions">
           <h4>Your Order:</h4>
           <div className="iconsDiv" onClick={showOrder}>
@@ -77,7 +73,7 @@ const YourOrderVertical = () => {
 
 const Wrapper = styled.section`
   position: fixed;
-  right: -30px;
+  right: -230px;
   top: 19vh;
   display: flex;
   flex-direction: column;
@@ -85,7 +81,7 @@ const Wrapper = styled.section`
   align-content: center;
   margin: 0 auto;
   margin-right: 30px;
-  z-index: 10;
+  z-index: 1;
   width: 250px;
   .orderdiv {
     position: relative;
@@ -161,7 +157,6 @@ const Wrapper = styled.section`
             justify-content: flex-end;
             bottom: 20px;
             right: 10px;
-            /* height: 100%; */
             svg {
               cursor: pointer;
               transform: scale(2);
@@ -191,15 +186,9 @@ const Wrapper = styled.section`
       text-align: center;
     }
   }
-  .hidden {
-    right: -200px;
+  .visible {
+    right: 200px;
   }
-
-  /* @media (max-width: 1200px) {
-    .orderdiv {
-      display: none;
-    }
-  } */
 `;
 
 export default YourOrderVertical;

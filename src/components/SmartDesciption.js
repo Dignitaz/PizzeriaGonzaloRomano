@@ -1,9 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import restlower1920 from "../assets/restlower_1920.jpg";
 import restlower640 from "../assets/restlower_640.jpg";
-import restupper1920 from "../assets/restupper_1920.jpg";
 import restupper640 from "../assets/restupper_640.jpg";
 
 const SmartDesctription = () => {
@@ -46,7 +44,6 @@ const Wrapper = styled.section`
   margin: 0 auto;
   max-width: var(--max-width);
   .img-section {
-    /* display: none; */
     position: relative;
     height: 300px;
     width: 100%;
@@ -103,34 +100,6 @@ const Wrapper = styled.section`
       margin-top: 20px;
     }
   }
-  /* @media (min-width: 470px) {
-    display: flex;
-    .img-section {
-      display: flex;
-      margin-right: 10px;
-      width: 50%;
-      &__img {
-        &--lower {
-          left: 2%;
-          top: 5%;
-          width: 90%;
-          height: 40%;
-        }
-        &--upper {
-          left: 10%;
-          top: 40%;
-          width: 90%;
-          height: 50%;
-        }
-      }
-    }
-    .small-about-section {
-      max-width: 55%;
-      margin: 10px auto;
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-  } */
   @media (min-width: 576px) {
     display: flex;
     flex-direction: column;

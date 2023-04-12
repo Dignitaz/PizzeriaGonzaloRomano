@@ -47,7 +47,6 @@ const Menu = (props) => {
             (elem) => elem.id === id
           );
           const priceOfPizza = samePositionInMenu.sizeprice;
-          console.log(priceOfPizza);
           if (selectedValue === "xl") {
             return {
               ...element,
@@ -204,9 +203,15 @@ const Wrapper = styled.section`
           flex-direction: row;
           align-content: center;
           margin-top: 10px;
+          span {
+            display: flex;
+            align-items: center;
+            height: 35px;
+          }
           input {
             text-align: center;
-            width: 20px;
+            font-size: 20px;
+            width: 25px;
           }
           input::-webkit-outer-spin-button,
           input::-webkit-inner-spin-button {
@@ -215,6 +220,11 @@ const Wrapper = styled.section`
           }
           input[type="number"] {
             -moz-appearance: textfield;
+          }
+          svg {
+            cursor: pointer;
+            width: 30px;
+            height: 35px;
           }
         }
         .picture {
@@ -226,7 +236,6 @@ const Wrapper = styled.section`
           right: 0;
           height: 100%;
           img {
-            /* transform: scale(1); */
             transform-origin: center right;
           }
         }

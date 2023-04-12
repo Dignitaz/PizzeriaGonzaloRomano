@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useOrderContext } from "../context/order_context";
 import { GrFormClose } from "react-icons/gr";
@@ -7,7 +7,6 @@ const OrderForm = () => {
   const {
     showOrderForm,
     toggleShowOrderForm,
-    setShowOrderForm,
     order,
     setOrder,
     setFullAmount,

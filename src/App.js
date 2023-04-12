@@ -15,7 +15,6 @@ function App() {
         <Route path="about" element={<About />} />
         <Route path="order" element={<Order />} />
         <Route path="contact" element={<Contact />} />
-        {/* <Route path='order/:id' element={<SingleProduct />} /> */}
         <Route path="*" element={<Error />} />
       </Routes>
       <Footer />

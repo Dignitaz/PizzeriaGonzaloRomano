@@ -1,13 +1,13 @@
-import food1 from "./gallery/food1.jpg";
-import food2 from "./gallery/food2.jpg";
-import food3 from "./gallery/food3.jpg";
-import food4 from "./gallery/food4.jpg";
-import food5 from "./gallery/food5.jpg";
-import food6 from "./gallery/food6.jpg";
-import food7 from "./gallery/food7.jpg";
-import food8 from "./gallery/food8.jpg";
-import food9 from "./gallery/food9.jpg";
-import food10 from "./gallery/food10.jpg";
+import food1 from "../assets/gallery/food1.jpg";
+import food2 from "../assets/gallery/food2.jpg";
+import food3 from "../assets/gallery/food3.jpg";
+import food4 from "../assets/gallery/food4.jpg";
+import food5 from "../assets/gallery/food5.jpg";
+import food6 from "../assets/gallery/food6.jpg";
+import food7 from "../assets/gallery/food7.jpg";
+import food8 from "../assets/gallery/food8.jpg";
+import food9 from "../assets/gallery/food9.jpg";
+import food10 from "../assets/gallery/food10.jpg";
 
 export const links = [
   {
@@ -44,10 +44,6 @@ export const photos = [
   { id: 9, url: `${food9}`, alttext: "Picture of food number 9" },
   { id: 10, url: `${food10}`, alttext: "Picture of food number 10" },
 ];
-
-// export const iconsURL = "http://localhost:6996/contact_icons";
-
-// export const menuURL = "http://localhost:6996/menu";
 
 export const dbURL =
   "https://my-json-server.typicode.com/Dignitaz/portfoliodb/db";

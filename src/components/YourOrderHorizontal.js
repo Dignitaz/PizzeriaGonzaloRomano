@@ -169,7 +169,6 @@ const Wrapper = styled.section`
               justify-content: flex-end;
               bottom: 20px;
               right: 10px;
-              /* height: 100%; */
               svg {
                 cursor: pointer;
                 transform: scale(2);
@@ -210,34 +209,6 @@ const Wrapper = styled.section`
   .hidden {
     bottom: -18%;
   }
-
-  /* @media (min-width: 303px) {
-    .hidden {
-      bottom: -22%;
-    }
-  } */
-  /* @media (min-width: 467px) {
-    .hidden {
-      top: 873px;
-    }
-  } */
-
-  /* @media (min-width: 800px) {
-    section {
-      .warning_amout {
-        font-size: 2px;
-      }
-    }
-    .hidden {
-      bottom: -200px;
-    }
-  } */
-
-  /* @media (min-width: 1200px) {
-    section {
-      display: none;
-    }
-  } */
 `;
 
 export default YourOrderHorizontal;

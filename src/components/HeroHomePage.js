@@ -16,9 +16,11 @@ const HeroHomePage = () => {
           Romano !
         </p>
         <div className="div-btn">
-          <Link to="/order" className="btn hero-btn">
-            Order now !
-          </Link>
+          <button>
+            <Link to="/order" className="btn hero-btn">
+              Order now !
+            </Link>
+          </button>
         </div>
       </article>
     </Wrapper>

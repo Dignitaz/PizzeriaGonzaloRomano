@@ -40,7 +40,6 @@ const Wrapper = styled.section`
   align-content: center;
   width: 95vw;
   margin: 0 auto;
-  /* max-width: var(--max-width); */
   .contact-maindiv {
     h2 {
       margin: 20px 0px 20px;

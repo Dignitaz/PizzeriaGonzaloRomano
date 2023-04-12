@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# E-Pizzeria Speedy Gonzalo Romano
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Cześć,
 
-## Available Scripts
+Stronka, którą stworzyłem jest opartą o React aplikacją, w której znajdują sie infomrację o restauracji oraz zakładka, gdzie możliwe jest złożenie zamówienia.
+Oparta o React strona ukazuje możliwości zastosowania możliwości biblioteki takie jak hooki czy routing. Zastosowano podstawowe komendy współpracy z API, aby pobrać dane z fake serwera.
+WAŻNE !
+Serwer jest darmowy, dlatego ma pewne ograniczenia. Jeżeli dane nie chcą się wczytać, odśwież proszę stronę lub odczekaj kilka sekund.
+Oprócz tego zastosowano oczywiśćie HTML, CSS w postaci StyledComponents oraz JS.
 
-In the project directory, you can run:
+Podgląd live pod linkiem: https://dignitaz.github.io/PortfolioPage/
 
-### `npm start`
+Hi,
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The website I created is an application based on React, which contains information about the restaurant and a tab where it is possible to place an order.
+The React-based website shows the possibilities of using the library's capabilities, such as hooks or routing. Basic API commands were used to download data from a fake server.
+IMPORTANT !
+The server is free, so it has some limitations. If the data does not want to load, please refresh the page or wait a few seconds.
+In addition, of course, HTML, CSS in the form of StyledComponents and JS were used.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Link to live preview: https://dignitaz.github.io/PortfolioPage/
 
-### `npm test`
+## 🛠 Technologies used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- HTML
 
-### `npm run build`
+- CSS/SCSS/BEM/StyledComponents,
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- JavaScript,
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- React,
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React Router,
 
-### `npm run eject`
+- REST API
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Authors
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [@Dignitaz](https://github.com/Dignitaz)

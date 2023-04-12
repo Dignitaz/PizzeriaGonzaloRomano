@@ -4,12 +4,11 @@ import {
   Menu,
   Loading,
   YourOrderVertical,
-  YourOrderHorizontal,
   OrderForm,
   OrderConfirm,
 } from "../components/index";
 import { useProductsContext } from "../context/products_context";
-const OrderPage = (props) => {
+const OrderPage = () => {
   const { fetchMenuData, rest_menu } = useProductsContext();
 
   useEffect(() => {
@@ -21,7 +20,6 @@ const OrderPage = (props) => {
       <OrderForm />
       <OrderConfirm />
       <YourOrderVertical />
-      {/* <YourOrderHorizontal /> */}
       <div className="orderpage">
         <h2>Ours Menu</h2>
         <div className="orderpage__underline"></div>

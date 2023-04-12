@@ -35,8 +35,7 @@ export const OrderProvider = ({ children }) => {
   const [isOrderValid, setIsOrderValid] = useState(false);
   const [state, dispatch] = useReducer(reducer, startState);
 
-  const sendToOrder = (id, name, sizeprice) => {
-    const { size, price } = sizeprice;
+  const sendToOrder = (id, name) => {
     const addToOrder = numberofPizzas.find((element) => element.id === id);
     const newPosition = {
       id: idCount,
@@ -45,7 +44,7 @@ export const OrderProvider = ({ children }) => {
       size: addToOrder.size,
       value: addToOrder.value,
     };
-    setIdCount(idCount + 1);
+    setIdCount((idCount) => idCount + 1);
 
     const sameObject = startState.actualOrder.filter(
       (element) => element.name === name
@@ -75,7 +74,6 @@ export const OrderProvider = ({ children }) => {
   const closePosition = (id) => {
     const { actualOrder } = startState;
     const orderAfterDelete = actualOrder.filter((element) => element.id !== id);
-    console.log(orderAfterDelete);
     startState.actualOrder = orderAfterDelete;
     dispatch({ type: CLOSE_POSITION, payload: startState });
   };
