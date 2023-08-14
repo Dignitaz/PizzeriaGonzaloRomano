@@ -8,7 +8,7 @@ WAŻNE !
 Serwer jest darmowy, dlatego ma pewne ograniczenia. Jeżeli dane nie chcą się wczytać, odśwież proszę stronę lub odczekaj kilka sekund.
 Oprócz tego zastosowano oczywiśćie HTML, CSS w postaci StyledComponents oraz JS.
 
-Podgląd live pod linkiem: [https://dignitaz.github.io/PortfolioPage/](https://dignitaz.github.io/PizzeriaGonzaloRomano)
+Podgląd live pod linkiem: https://dignitaz.github.io/PizzeriaGonzaloRomano
 
 Hi,
 
@@ -18,7 +18,7 @@ IMPORTANT !
 The server is free, so it has some limitations. If the data does not want to load, please refresh the page or wait a few seconds.
 In addition, of course, HTML, CSS in the form of StyledComponents and JS were used.
 
-Link to live preview: [https://dignitaz.github.io/PortfolioPage/](https://dignitaz.github.io/PizzeriaGonzaloRomano)
+Link to live preview: https://dignitaz.github.io/PizzeriaGonzaloRomano
 
 ## 🛠 Technologies used
 
